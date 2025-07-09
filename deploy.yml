@@ -1,7 +1,11 @@
----
 - hosts: routers
   become: yes
   tasks:
     - name: Update apt cache
       apt:
         update_cache: yes
+
+    - name: Upgrade all packages to latest version
+      apt:
+        upgrade: dist
+
