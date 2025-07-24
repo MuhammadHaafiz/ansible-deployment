@@ -11,7 +11,7 @@
 
     - name: Buat file info deployment
       copy:
-      content: "✅ Sistem telah diupdate oleh Ansible\n"
+      content: "Sistem telah diupdate oleh Ansible\n"
       dest: /home/ansible/deploy-info.txt
       owner: ansible
       group: ansible
@@ -19,6 +19,6 @@
 
     - name: Tampilkan pesan sukses
       debug:
-        msg: "✅ Konfigurasi berhasil dijalankan!"
+        msg: "Konfigurasi berhasil dijalankan!"
 
 
