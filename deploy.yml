@@ -1,4 +1,4 @@
-- hosts: routers
+- hosts: pcs
   become: yes
   tasks:
     - name: Update apt cache
