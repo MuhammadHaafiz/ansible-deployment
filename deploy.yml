@@ -4,19 +4,24 @@
     - name: Update apt cache
       apt:
         update_cache: yes
+        cache_valid_time: 3600
 
     - name: Upgrade all packages to latest version
       apt:
         upgrade: dist
 
-    - name: Aktifkan IP Forwarding
+    - name: Aktifkan IP Forwarding (permanent)
       lineinfile:
         path: /etc/sysctl.conf
         regexp: '^#?net.ipv4.ip_forward'
         line: 'net.ipv4.ip_forward=1'
 
-    - name: Terapkan konfigurasi sysctl
-      command: sysctl -p
+    - name: Terapkan konfigurasi sysctl (langsung aktif)
+      sysctl:
+        name: net.ipv4.ip_forward
+        value: '1'
+        state: present
+        reload: yes
 
     - name: Buat file info deployment
       copy:
@@ -29,5 +34,3 @@
     - name: Tampilkan pesan sukses
       debug:
         msg: "✅ Konfigurasi berhasil dijalankan!"
-
-
